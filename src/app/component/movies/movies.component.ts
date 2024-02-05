@@ -56,8 +56,6 @@ export class MoviesComponent implements OnInit {
         GetBackdropUrl(movie)
       );
 
-      console.log(res.results);
-
       this.total_results = res.total_results;
       this.movies = correctMoviesWithBackdrop;
     });
