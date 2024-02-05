@@ -63,13 +63,13 @@ export class MoviesService {
 
   getBackdropsImages(id: number) {
     return this.http.get(
-      `${this.baseUrl}movie/${id}/images?api_key=${this.apiKey}&language=${this.language}&region=${this.region}`
+      `${this.baseUrl}movie/${id}/images?api_key=${this.apiKey}`
     );
   }
 
   getMovieVideos(id: number): Observable<any> {
     return this.http.get(
-      `${this.baseUrl}movie/${id}/videos?api_key=${this.apiKey}&language=${this.language}&region=${this.region}`
+      `${this.baseUrl}movie/${id}/videos?api_key=${this.apiKey}`
     );
   }
 
