@@ -1,1 +1,88 @@
-/* You can add global styles to this file, and also import other style files */
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+
+:root {
+  --white: #fff;
+  --gray-100: #f3f4f6;
+  --gray-300: #d1d5db;
+  --gray-400: #9ca3af;
+  --gray-600: #4b5563;
+  --gray-700: #374151;
+  --gray-800: #1f2937;
+  --gray-900: #111827;
+
+  --yellow-500: #eab308;
+
+  --red-500: #ef4444;
+  --red-700: #b91c1c;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--gray-900);
+  color: var(--white);
+  -webkit-font-smoothing: antialiased;
+}
+
+body,
+input,
+textarea,
+button {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+.p-paginator {
+  background: transparent !important;
+
+  button {
+    color: var(--white);
+
+    &:hover {
+      background: var(--red-500);
+    }
+  }
+
+  .p-highlight {
+    background: var(--red-500);
+  }
+}
+
+.p-tabview .p-tabview-nav {
+  background: transparent !important;
+  border: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+
+  li {
+    a {
+      text-decoration: none;
+      background-color: transparent;
+
+      color: var(--white);
+    }
+
+    &.p-highlight {
+      a {
+        border-color: var(--red-500);
+      }
+    }
+  }
+}
+
+.p-tabview .p-tabview-panels {
+  background: transparent !important;
+}
+
+.p-dialog-header {
+  background: var(--gray-700);
+}

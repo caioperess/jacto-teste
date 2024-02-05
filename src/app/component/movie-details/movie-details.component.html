@@ -1,0 +1,185 @@
+<section>
+  <div class="sliderContainer">
+    <div class="slider">
+      <div class="backdrop">
+        <div></div>
+        <img src="{{ movie.backdrop_path }}" alt="" />
+      </div>
+
+      <div class="info">
+        <h1>
+          <a [routerLink]="['/movie/', movie.id]">{{ movie.title }}</a>
+        </h1>
+
+        <div class="critics">
+          <span
+            ><mat-icon fontIcon="star"></mat-icon>
+            {{ movie.vote_average.toFixed(1) }}/10</span
+          >
+          |
+          <span>{{ movie.vote_count }} Avaliações</span>
+          |
+          <span>{{ movie.release_date | date : "yyyy" }}</span>
+        </div>
+
+        <button type="button" (click)="showDialog(trailer.key)">
+          <mat-icon fontIcon="play_arrow"></mat-icon>
+          <span>Assistir Trailer</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <p-dialog [(visible)]="visible" [style]="{ width: '50vw' }">
+    <iframe
+      [src]="video"
+      frameBorder="0"
+      allow="autoplay; encrypted-media"
+      allowfullscreen
+      width="100%"
+      height="500px"
+    ></iframe>
+  </p-dialog>
+</section>
+
+<section class="infoSection">
+  <p-tabView>
+    <p-tabPanel header="SOBRE">
+      <div class="content">
+        <img src="{{ movie.poster_path }}" alt="" />
+
+        <div class="movieInfoBox">
+          <h2>Sumário</h2>
+          <span class="description">{{ movie.overview }}</span>
+
+          <div class="gridInfo">
+            <span>Data de lançamento</span>
+            <span>{{ movie.release_date | fullDate }}</span>
+
+            <span>Duração</span>
+            <span>{{ movie.runtime }}</span>
+
+            <span>Orçamento</span>
+            <span>${{ movie.budget | numberWithCommas }}</span>
+
+            <span>Receita</span>
+            <span>${{ movie.revenue | numberWithCommas }}</span>
+
+            <span>Gênero</span>
+            <div>
+              <span *ngFor="let genre of movie.genres">{{ genre.name }}</span>
+            </div>
+
+            <span>Status</span>
+            <span>{{ movie.status }}</span>
+
+            <span>Linguagens</span>
+            <div>
+              <span *ngFor="let language of movie.spoken_languages">{{
+                language.iso_639_1.toUpperCase()
+              }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="actors">
+        <h2>Atores</h2>
+
+        <p-carousel
+          [value]="casts"
+          [numVisible]="6"
+          [numScroll]="4"
+          [circular]="false"
+          [responsiveOptions]="responsiveOptions"
+          [showIndicators]="false"
+        >
+          <ng-template let-cast pTemplate="item">
+            <div class="actorCard">
+              <img
+                src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/{{
+                  cast.profile_path
+                }}"
+                alt=""
+              />
+
+              <h6>{{ cast.name }}</h6>
+            </div>
+          </ng-template>
+        </p-carousel>
+      </div>
+
+      <div class="recommendedMovies">
+        <h2>Filmes recomendados</h2>
+
+        <p-carousel
+          [value]="recomendMovies"
+          [numVisible]="6"
+          [numScroll]="4"
+          [circular]="false"
+          [responsiveOptions]="responsiveOptions"
+          [showIndicators]="false"
+        >
+          <ng-template let-movie pTemplate="item">
+            <div class="movieCard" [routerLink]="['/movie/', movie.id]">
+              <div class="overlay">
+                <div>
+                  <mat-icon fontIcon="play_arrow"></mat-icon>
+                  <span>Assistir agora</span>
+                </div>
+              </div>
+
+              <img src="{{ movie.poster_path }}" alt="" />
+
+              <h3>{{ movie.title }}</h3>
+
+              <div class="rate">
+                <mat-icon fontIcon="star"></mat-icon
+                >{{ movie.vote_average.toFixed(1) }}/10
+              </div>
+
+              <div class="year">
+                {{ movie?.release_date | date : "yyyy" }}
+              </div>
+            </div>
+          </ng-template>
+        </p-carousel>
+      </div>
+    </p-tabPanel>
+    <p-tabPanel header="VIDEOS">
+      <div class="videoPanelContainer">
+        <div
+          class="videoCard"
+          *ngFor="let video of relatedVideos"
+          (click)="showDialog(video.key)"
+        >
+          <div class="coverBox">
+            <img
+              src="https://img.youtube.com/vi/{{ video.key }}/mqdefault.jpg"
+              alt=""
+            />
+
+            <div class="overlay">
+              <mat-icon fontIcon="play_circle"></mat-icon>
+            </div>
+          </div>
+
+          <span class="name">{{ video.name }}</span>
+          <span class="desc">{{ video.type }}</span>
+        </div>
+      </div>
+    </p-tabPanel>
+    <p-tabPanel header="FOTOS">
+      <div class="photosContainer">
+        <div class="photoBox" *ngFor="let photo of backdrops">
+          <img
+            src="https://image.tmdb.org/t/p/w533_and_h300_bestv2/{{
+              photo.file_path
+            }}"
+            alt=""
+          />
+        </div>
+      </div>
+    </p-tabPanel>
+  </p-tabView>
+</section>

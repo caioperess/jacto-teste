@@ -1,0 +1,40 @@
+<section>
+  <ng-container><app-slider></app-slider></ng-container>
+</section>
+
+<section class="movieList">
+  <h2>Filmes populares</h2>
+
+  <p-carousel
+    [value]="popular_movies"
+    [numVisible]="6"
+    [numScroll]="3"
+    [showIndicators]="false"
+    [responsiveOptions]="responsiveOptions"
+    [contentClass]="class"
+  >
+    <ng-template let-movie pTemplate="item">
+      <div class="movieCard" [routerLink]="['/movie/', movie.id]">
+        <div class="overlay">
+          <div>
+            <mat-icon fontIcon="play_arrow"></mat-icon>
+            <span>Assistir agora</span>
+          </div>
+        </div>
+
+        <img src="{{ movie.poster_path }}" alt="" />
+
+        <h3>{{ movie.title }}</h3>
+
+        <div class="rate">
+          <mat-icon fontIcon="star"></mat-icon
+          >{{ movie.vote_average.toFixed(1) }}/10
+        </div>
+
+        <div class="year">
+          {{ movie?.release_date | date : "yyyy" }}
+        </div>
+      </div>
+    </ng-template>
+  </p-carousel>
+</section>

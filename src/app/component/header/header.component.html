@@ -1,0 +1,19 @@
+<header class="container">
+  <nav class="nav">
+    <img src="/assets/logo.png" alt="MovieDB" [routerLink]="['/']" />
+
+    <ul>
+      <li><a [routerLink]="['/']">Ínicio</a></li>
+      <li><a [routerLink]="['/movies']">Filmes</a></li>
+    </ul>
+  </nav>
+
+  <div class="actions">
+    <div class="inputBox">
+      <input type="text" placeholder="Pesquisar filme..." />
+      <button type="button"><mat-icon fontIcon="search"></mat-icon></button>
+    </div>
+    <mat-icon fontIcon="notifications"></mat-icon>
+    <mat-icon fontIcon="person"></mat-icon>
+  </div>
+</header>

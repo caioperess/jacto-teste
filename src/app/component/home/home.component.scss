@@ -1,0 +1,124 @@
+section {
+  & + & {
+    margin-top: 1rem;
+  }
+}
+
+.movieList {
+  h2 {
+    margin-bottom: 0.5rem;
+  }
+
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem 2.5rem;
+
+  .carousel-content {
+    background-color: red;
+  }
+}
+
+.movieCard {
+  position: relative;
+  background: var(--gray-800);
+  display: flex;
+  flex-direction: column;
+
+  cursor: pointer;
+
+  border-radius: 8px;
+  overflow: hidden;
+
+  margin-right: 1rem;
+
+  &:hover {
+    .overlay {
+      visibility: visible;
+    }
+  }
+
+  img {
+    flex: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  h3 {
+    font-size: 0.875rem;
+    padding: 0.5rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .overlay {
+    position: absolute;
+    visibility: hidden;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    div {
+      background: var(--red-500);
+      padding: 0.5rem;
+      font-size: 1rem;
+      border-radius: 8px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.2rem;
+    }
+  }
+
+  .rate {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+
+    background: var(--gray-900);
+    border-radius: 8px;
+    padding: 0.5rem;
+
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+
+    font-size: 0.875rem;
+    font-weight: bold;
+
+    .mat-icon {
+      width: 16px;
+      height: 16px;
+      font-size: 0.875rem;
+
+      color: var(--yellow-500);
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  .year {
+    position: absolute;
+    bottom: 40px;
+    left: 10px;
+
+    background: var(--gray-900);
+    border-radius: 8px;
+    padding: 0.5rem;
+
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+
+    font-size: 0.875rem;
+    font-weight: bold;
+  }
+}

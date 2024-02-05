@@ -1,0 +1,41 @@
+<div class="container">
+  <p-carousel
+    class="carousel"
+    [value]="movies"
+    [circular]="true"
+    [numVisible]="1"
+    [showIndicators]="false"
+    [showNavigators]="false"
+    [autoplayInterval]="5000"
+  >
+    <ng-template let-movie pTemplate="item">
+      <div class="slider">
+        <div class="backdrop">
+          <div></div>
+          <img src="{{ movie.backdrop_path }}" alt="" />
+        </div>
+
+        <div class="info">
+          <h1>
+            <a [routerLink]="['/movie/', movie.id]">{{ movie.title }}</a>
+          </h1>
+
+          <div class="critics">
+            <span
+              ><mat-icon fontIcon="star"></mat-icon>
+              {{ movie.vote_average.toFixed(1) }}/10</span
+            >
+            |
+            <span>{{ movie.vote_count }} Reviews</span>
+            |
+            <span>{{ movie.release_date | date : "yyyy" }}</span>
+          </div>
+
+          <div class="description">
+            {{ movie.overview }}
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </p-carousel>
+</div>

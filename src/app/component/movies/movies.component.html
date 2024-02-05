@@ -1,0 +1,38 @@
+<section class="movieList">
+  <h1>Listagem de filmes</h1>
+
+  <div class="moviesBox" data-columns="4">
+    <div
+      class="movieCard"
+      [routerLink]="['/movie/', movie.id]"
+      *ngFor="let movie of movies"
+    >
+      <div class="overlay">
+        <div>
+          <mat-icon fontIcon="play_arrow"></mat-icon>
+          <span>Assistir agora</span>
+        </div>
+      </div>
+
+      <img src="{{ movie.poster_path }}" alt="" />
+
+      <h3>{{ movie.title }}</h3>
+
+      <div class="rate">
+        <mat-icon fontIcon="star"></mat-icon
+        >{{ movie.vote_average.toFixed(1) }}/10
+      </div>
+
+      <div class="year">
+        {{ movie?.release_date | date : "yyyy" }}
+      </div>
+    </div>
+  </div>
+
+  <p-paginator
+    (onPageChange)="changePage($event)"
+    [first]="first"
+    [rows]="20"
+    [totalRecords]="total_results"
+  ></p-paginator>
+</section>
