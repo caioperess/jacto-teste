@@ -86,3 +86,11 @@ button {
 .p-dialog-header {
   background: var(--gray-700);
 }
+
+.p-sidebar-header {
+  background: var(--gray-800);
+
+  button {
+    color: var(--white);
+  }
+}

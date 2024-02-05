@@ -10,10 +10,44 @@
 
   <div class="actions">
     <div class="inputBox">
-      <input type="text" placeholder="Pesquisar filme..." />
-      <button type="button"><mat-icon fontIcon="search"></mat-icon></button>
+      <input
+        type="text"
+        placeholder="Pesquisar filme..."
+        [(ngModel)]="searchText"
+        name="searchText"
+        (keyup.enter)="handleSearchMovie()"
+      />
+      <button type="button" (click)="handleSearchMovie()">
+        <mat-icon fontIcon="search"></mat-icon>
+      </button>
     </div>
-    <mat-icon fontIcon="notifications"></mat-icon>
-    <mat-icon fontIcon="person"></mat-icon>
+    <mat-icon class="monitorIcons" fontIcon="notifications"></mat-icon>
+    <mat-icon class="monitorIcons" fontIcon="person"></mat-icon>
+
+    <div class="mobileButton">
+      <button type="button" (click)="menuVisible = true">
+        <mat-icon fontIcon="menu"></mat-icon>
+      </button>
+    </div>
   </div>
+
+  <p-sidebar class="mobileNavContainer" [(visible)]="menuVisible" position="left">
+    <nav class="mobileNav">
+      <ul>
+        <li>
+          <mat-icon fontIcon="home"></mat-icon>
+          <a [routerLink]="['/']">Ínicio</a>
+        </li>
+        <li>
+          <mat-icon fontIcon="movie"></mat-icon>
+          <a [routerLink]="['/movies']">Filmes</a>
+        </li>
+        <li>
+          <mat-icon fontIcon="notifications"></mat-icon>
+          <a href="#">Notificações</a>
+        </li>
+        <li><mat-icon fontIcon="person"></mat-icon> <a href="#">Perfil</a></li>
+      </ul>
+    </nav>
+  </p-sidebar>
 </header>

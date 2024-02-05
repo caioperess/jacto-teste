@@ -46,7 +46,7 @@
   <p-tabView>
     <p-tabPanel header="SOBRE">
       <div class="content">
-        <img src="{{ movie.poster_path }}" alt="" />
+        <img class="posterImg" src="{{ movie.poster_path }}" alt="" />
 
         <div class="movieInfoBox">
           <h2>Sumário</h2>
@@ -54,7 +54,7 @@
 
           <div class="gridInfo">
             <span>Data de lançamento</span>
-            <span>{{ movie.release_date | fullDate }}</span>
+            <span>{{ movie.release_date | date : "dd/MM/yyyy" }}</span>
 
             <span>Duração</span>
             <span>{{ movie.runtime }}</span>
@@ -97,6 +97,13 @@
           <ng-template let-cast pTemplate="item">
             <div class="actorCard">
               <img
+                *ngIf="!cast.profile_path"
+                src="/assets/no-image.png"
+                alt=""
+              />
+
+              <img
+                *ngIf="cast.profile_path"
                 src="https://image.tmdb.org/t/p/w370_and_h556_bestv2/{{
                   cast.profile_path
                 }}"
@@ -129,7 +136,16 @@
                 </div>
               </div>
 
-              <img src="{{ movie.poster_path }}" alt="" />
+              <img
+                *ngIf="!movie.poster_path"
+                src="{{ movie.poster_path }}"
+                alt=""
+              />
+              <img
+                *ngIf="movie.poster_path"
+                src="{{ movie.poster_path }}"
+                alt=""
+              />
 
               <h3>{{ movie.title }}</h3>
 

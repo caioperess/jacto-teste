@@ -1,6 +1,19 @@
 <section class="movieList">
   <h1>Listagem de filmes</h1>
 
+  <div class="inputBox">
+    <input
+      type="text"
+      placeholder="Pesquisar filme..."
+      [(ngModel)]="searchText"
+      name="searchText"
+      (keyup.enter)="searchMovies(1)"
+    />
+    <button type="button" (click)="searchMovies(1)">
+      <mat-icon fontIcon="search"></mat-icon>
+    </button>
+  </div>
+
   <div class="moviesBox" data-columns="4">
     <div
       class="movieCard"
@@ -14,7 +27,8 @@
         </div>
       </div>
 
-      <img src="{{ movie.poster_path }}" alt="" />
+      <img *ngIf="!movie.poster_path" src="/assets/no-image.png" alt="" />
+      <img *ngIf="movie.poster_path" src="{{ movie.poster_path }}" alt="" />
 
       <h3>{{ movie.title }}</h3>
 

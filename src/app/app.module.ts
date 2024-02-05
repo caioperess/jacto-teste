@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { RouterModule } from '@angular/router';
 import { CarouselModule } from 'primeng/carousel';
+import { SidebarModule } from 'primeng/sidebar';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './component/footer/footer.component';
@@ -33,6 +34,7 @@ import { SliderComponent } from './component/slider/slider.component';
     FormsModule,
     MatIconModule,
     CarouselModule,
+    SidebarModule,
   ],
   bootstrap: [AppComponent],
   providers: [provideAnimationsAsync()],

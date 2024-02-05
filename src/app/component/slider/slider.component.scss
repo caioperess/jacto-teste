@@ -63,4 +63,68 @@
       max-width: 35%;
     }
   }
+
+  @media (max-width: 1023px) {
+    .backdrop {
+      div {
+        width: 0;
+      }
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .info {
+      text-shadow: 4px 4px 5px rgba(0, 0, 0, 0.6);
+      font-weight: bold;
+
+      .description {
+        padding-right: 0.5rem;
+        max-width: 100%;
+        font-size: 0.875rem;
+      }
+    }
+  }
+
+  @media (max-width: 526px) {
+    .backdrop {
+      div {
+        width: 0;
+      }
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .info {
+      bottom: 5px;
+
+      text-shadow: 4px 4px 5px rgba(0, 0, 0, 0.6);
+      font-weight: bold;
+
+      h1 {
+        a {
+          font-size: 1rem;
+        }
+      }
+
+      .critics {
+        span {
+          font-size: 0.75rem;
+        }
+      }
+
+      .description {
+        padding-right: 0.5rem;
+        width: 100%;
+        font-size: 0.75rem;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        overflow: hidden;
+      }
+    }
+  }
 }
